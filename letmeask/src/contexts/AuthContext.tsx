@@ -5,18 +5,18 @@ type User = {
     id: string;
     name: string;
     avatar: string;
-}
+};
 
 type AuthContextType = {
-user: User | undefined;
-signInWithGoogle: () => Promise<void>;
-}
+  user: User | undefined;
+  signInWithGoogle: () => Promise<void>;
+};
 
 type AuthContextProviderProps = {
     children: ReactNode;
-}
+};
 
-export const AuthContext = createContext({} as AuthContextType);
+export const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export function AuthContextProvider(props: AuthContextProviderProps) {
     const [ user, setUser ] = useState<User>()

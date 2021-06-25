@@ -8,8 +8,8 @@ type QuestionProps = {
   author: {
     name: string;
     avatar: string;
-  }
-  children?: ReactNode; // Qualquer componente JSX
+  };
+  children?: ReactNode;
   isAnswered?: boolean;
   isHighlighted?: boolean;
 }
