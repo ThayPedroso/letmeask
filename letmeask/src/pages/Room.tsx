@@ -19,12 +19,11 @@ type RoomParams = {
 }
 
 export function Room() {
-  const { user } = useAuth()
+  const { user, signOutWithGoogle } = useAuth()
   const params = useParams<RoomParams>();
   const [ newQuestion, setNewQuestion ] = useState('')
   const roomId = params.id;
   const { title, questions } = useRoom(roomId)
-
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -62,12 +61,21 @@ export function Room() {
     }
   }
 
+  async function handleUserLogOut() {
+    if (user) {
+      await signOutWithGoogle()
+    }
+  }
+
   return (
     <div id="page-room">
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={roomId} />
+          <div>
+            <RoomCode code={roomId} />
+            <Button onClick={handleUserLogOut}>Log Out</Button>
+          </div>
         </div>
       </header>
 

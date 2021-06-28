@@ -13,6 +13,7 @@ import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
 
 import '../styles/room.scss';
+import { useAuth } from '../hooks/useAuth';
 
 type RoomParams = {
   id: string
@@ -23,6 +24,7 @@ export function AdminRoom() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { title, questions } = useRoom(roomId)
+  const user = useAuth()
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -30,6 +32,10 @@ export function AdminRoom() {
     })
 
     history.push('/')
+  }
+
+  async function handleUserLogOut() {
+    await user.signOutWithGoogle()
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
@@ -58,6 +64,7 @@ export function AdminRoom() {
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
+            <Button onClick={handleUserLogOut}>Log Out</Button>
           </div>
         </div>
       </header>
