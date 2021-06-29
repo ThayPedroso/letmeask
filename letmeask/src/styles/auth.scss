@@ -3,13 +3,17 @@
     align-items: stretch;
     height: 100vh; /*ocupa sempre 100% da tela*/
 
+    &.dark {
+      background: #515151;
+    }
+
     aside {
         flex: 7; /*ocupa a parte esquerda da tela, um pouco menor*/
-        
+
         background: #835afd; /**/
         color: #FFF;
 
-        display: flex;  
+        display: flex;
         flex-direction: column;   /*um abaixo do outro*/
         justify-content: center;  /*verticalmente centralizado*/
 

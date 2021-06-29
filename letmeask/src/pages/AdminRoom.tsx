@@ -14,6 +14,7 @@ import answerImg from '../assets/images/answer.svg';
 
 import '../styles/room.scss';
 import { useAuth } from '../hooks/useAuth';
+import { useEffect } from 'react';
 
 type RoomParams = {
   id: string
@@ -25,6 +26,12 @@ export function AdminRoom() {
   const roomId = params.id;
   const { title, questions } = useRoom(roomId)
   const user = useAuth()
+
+  useEffect(() => {
+    if (!user) {
+      history.push('/')
+    }
+  }, [user, history])
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({

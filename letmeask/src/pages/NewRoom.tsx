@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import illustrationImg from '../assets/images/illustration.svg'
@@ -14,6 +14,12 @@ export function NewRoom() {
     const { user } = useAuth()
     const history = useHistory()
     const [ newRoom, setNewRoom ] = useState('')
+
+    useEffect(() => {
+      if (!user) {
+        history.push('/')
+      }
+    }, [user, history])
 
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault()
