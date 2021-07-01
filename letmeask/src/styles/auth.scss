@@ -5,11 +5,11 @@
 
     aside {
         flex: 7; /*ocupa a parte esquerda da tela, um pouco menor*/
-        
+
         background: #835afd; /**/
         color: #FFF;
 
-        display: flex;  
+        display: flex;
         flex-direction: column;   /*um abaixo do outro*/
         justify-content: center;  /*verticalmente centralizado*/
 
@@ -143,3 +143,13 @@
     }
 }
 
+.dark {
+  background: #2E294E;
+
+  .main-content {
+
+    h2 {
+      color: #fffaff;
+    }
+  }
+}

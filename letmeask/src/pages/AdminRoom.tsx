@@ -7,13 +7,17 @@ import { Question } from '../components/Question';
 import { useRoom } from '../hooks/useRoom';
 import { database } from '../services/firebase';
 
+import { useAuth } from '../hooks/useAuth';
+import { useEffect } from 'react';
+import { useTheme } from '../hooks/useTheme';
+
 import logoImg from '../assets/images/logo.svg';
+import logoImgDark from '../assets/images/logo_dark.svg'
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
 
 import '../styles/room.scss';
-import { useAuth } from '../hooks/useAuth';
 
 type RoomParams = {
   id: string
@@ -25,6 +29,13 @@ export function AdminRoom() {
   const roomId = params.id;
   const { title, questions } = useRoom(roomId)
   const user = useAuth()
+  const { theme, toggleTheme } = useTheme()
+
+  useEffect(() => {
+    if (!user) {
+      history.push('/')
+    }
+  }, [user, history])
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -57,10 +68,10 @@ export function AdminRoom() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={theme === 'light' ? logoImg : logoImgDark} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
@@ -70,6 +81,8 @@ export function AdminRoom() {
       </header>
 
       <main>
+      <h1>{theme}</h1>
+      <button onClick={toggleTheme}>Toggle</button>
         <div className="room-title">
           <h1>Sala {title}</h1>
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
