@@ -7,6 +7,7 @@ import { Button } from '../components/Button'
 
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
+import logoImgDark from '../assets/images/logo_dark.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 
 import '../styles/auth.scss'
@@ -59,7 +60,7 @@ export function Home() {
                 <div className="main-content">
                     <h1>{theme}</h1>
                     <button onClick={toggleTheme}>Toggle</button>
-                    <img src={logoImg} alt="Letmeask" />
+                    <img src={theme === 'light' ? logoImg : logoImgDark} alt="Letmeask" />
                     { !user ? (
                       <>
                         <button onClick={handleCreateRoom} className="create-room">

@@ -10,10 +10,13 @@ import { useRoom } from '../hooks/useRoom';
 
 import { database } from '../services/firebase';
 
+import { useEffect } from 'react';
+import { useTheme } from '../hooks/useTheme';
+
 import logoImg from '../assets/images/logo.svg';
+import logoImgDark from '../assets/images/logo_dark.svg'
 
 import '../styles/room.scss';
-import { useEffect } from 'react';
 
 type RoomParams = {
   id: string
@@ -26,6 +29,7 @@ export function Room() {
   const [ newQuestion, setNewQuestion ] = useState('')
   const roomId = params.id;
   const { title, questions } = useRoom(roomId)
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     if (!user) {
@@ -76,10 +80,10 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={theme === 'light' ? logoImg : logoImgDark} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
             <Button onClick={handleUserLogOut}>Log Out</Button>
@@ -88,6 +92,8 @@ export function Room() {
       </header>
 
       <main>
+      <h1>{theme}</h1>
+      <button onClick={toggleTheme}>Toggle</button>
         <div className="room-title">
           <h1>Sala {title}</h1>
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
