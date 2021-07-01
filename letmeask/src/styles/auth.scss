@@ -3,10 +3,6 @@
     align-items: stretch;
     height: 100vh; /*ocupa sempre 100% da tela*/
 
-    &.dark {
-      background: #2E294E;
-    }
-
     aside {
         flex: 7; /*ocupa a parte esquerda da tela, um pouco menor*/
 
@@ -147,3 +143,13 @@
     }
 }
 
+.dark {
+  background: #2E294E;
+
+  .main-content {
+
+    h2 {
+      color: #fffaff;
+    }
+  }
+}
