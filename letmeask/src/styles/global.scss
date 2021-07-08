@@ -12,3 +12,21 @@ body {
 body, input, button, textarea {
     font: 400 16px 'Roboto', sans-serif;
 }
+
+#root {
+  #spinner {
+    background: #835afd;
+    height: 100vh; /*ocupa sempre 100% da tela*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;   /*um abaixo do outro*/
+    gap: 16px;
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      color: #f8f8f8;
+    }
+  }
+}

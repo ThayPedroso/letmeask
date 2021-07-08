@@ -13,6 +13,7 @@ import { database } from '../services/firebase';
 import { useEffect } from 'react';
 import { useTheme } from '../hooks/useTheme';
 
+import { Switch } from "@chakra-ui/react"
 import logoImg from '../assets/images/logo.svg';
 import logoImgDark from '../assets/images/logo_dark.svg'
 
@@ -87,13 +88,12 @@ export function Room() {
           <div>
             <RoomCode code={roomId} />
             <Button onClick={handleUserLogOut}>Log Out</Button>
+            <Switch size="lg" colorScheme="purple" onChange={toggleTheme}/>
           </div>
         </div>
       </header>
 
       <main>
-      <h1>{theme}</h1>
-      <button onClick={toggleTheme}>Toggle</button>
         <div className="room-title">
           <h1>Sala {title}</h1>
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}

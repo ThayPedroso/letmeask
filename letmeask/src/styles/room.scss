@@ -19,6 +19,7 @@
       > div {  /* criada para que o justify-content: space-between acima jogue o botão e a sala para a direita */
         display: flex;  /* para que os elementos fiquem um ao lado do outro */
         gap: 16px; /* suportada pela maioria dos navegadores, adiciona espaço entre os elementos de forma fácil e rápida. Só se aplica se tiver mais de um elemento */
+        align-items: center;
 
         button {
           height: 40px; /* diminui a altura do botão para ficar igual à altura da sala */
