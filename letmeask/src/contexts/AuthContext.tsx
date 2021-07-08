@@ -2,6 +2,8 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, firebase } from "../services/firebase";
 
+import { Spinner } from "@chakra-ui/react"
+
 type User = {
     id: string;
     name: string;
@@ -75,7 +77,12 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
 
     if (loading) {
-      return <p>Carregando...</p>
+      return (
+        <div id="spinner">
+          <Spinner size="xl" thickness="4px" speed="0.65s" color="purple"/>
+          <h1>Aguarde...</h1>
+        </div>
+      )
     }
 
     return (

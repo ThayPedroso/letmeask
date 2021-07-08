@@ -58,8 +58,6 @@ export function Home() {
             </aside>
             <main>
                 <div className="main-content">
-                    <h1>{theme}</h1>
-                    <button onClick={toggleTheme}>Toggle</button>
                     <img src={theme === 'light' ? logoImg : logoImgDark} alt="Letmeask" />
                     { !user ? (
                       <>
@@ -69,7 +67,12 @@ export function Home() {
                         </button>
                         <div className="separator">ou entre em uma sala</div>
                       </>
-                    ) : (<></>)}
+                    ) : (<>
+                          <Button onClick={handleCreateRoom}>
+                            Crie sua sala
+                          </Button>
+                          <div className="separator">ou entre em uma sala</div>
+                        </>)}
 
                     <form onSubmit={handleJoinRoom}>
                         <input

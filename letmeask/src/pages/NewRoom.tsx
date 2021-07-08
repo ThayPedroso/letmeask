@@ -49,8 +49,6 @@ export function NewRoom() {
                 <p>Tire as dúvidas da sua audiência em tempo-real</p>
             </aside>
             <main>
-              <h1>{theme}</h1>
-              <button onClick={toggleTheme}>Toggle</button>
                 <div className="main-content">
                     <img src={theme === 'light' ? logoImg : logoImgDark} alt="Letmeask" />
                     <h2>Crie uma nova sala</h2>

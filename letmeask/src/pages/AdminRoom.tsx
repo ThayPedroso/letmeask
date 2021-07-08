@@ -17,6 +17,7 @@ import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
 
+import { Switch } from "@chakra-ui/react"
 import '../styles/room.scss';
 
 type RoomParams = {
@@ -76,13 +77,12 @@ export function AdminRoom() {
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
             <Button onClick={handleUserLogOut}>Log Out</Button>
+            <Switch size="lg" colorScheme="purple" onChange={toggleTheme}/>
           </div>
         </div>
       </header>
 
       <main>
-      <h1>{theme}</h1>
-      <button onClick={toggleTheme}>Toggle</button>
         <div className="room-title">
           <h1>Sala {title}</h1>
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
