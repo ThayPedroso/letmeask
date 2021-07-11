@@ -17,7 +17,7 @@ export function Home() {
     const history = useHistory();
     const { user, signInWithGoogle } = useAuth()
     const [ roomCode, setRoomCode ] = useState('')
-    const { theme, toggleTheme } = useTheme()
+    const { theme } = useTheme()
 
     async function handleCreateRoom() {
         if (!user) {
