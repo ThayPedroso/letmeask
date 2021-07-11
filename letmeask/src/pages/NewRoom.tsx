@@ -16,7 +16,7 @@ export function NewRoom() {
     const { user } = useAuth()
     const history = useHistory()
     const [ newRoom, setNewRoom ] = useState('')
-    const { theme, toggleTheme } = useTheme()
+    const { theme } = useTheme()
 
     useEffect(() => {
       if (!user) {
