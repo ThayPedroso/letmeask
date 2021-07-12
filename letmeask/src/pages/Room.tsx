@@ -1,23 +1,23 @@
-import { FormEvent, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { FormEvent, useState } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 
-import { Button } from '../components/Button';
-import { RoomCode } from '../components/RoomCode';
-import { Question } from '../components/Question';
+import { Button } from '../components/Button'
+import { RoomCode } from '../components/RoomCode'
+import { Question } from '../components/Question'
 
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
+import { useAuth } from '../hooks/useAuth'
+import { useRoom } from '../hooks/useRoom'
 
-import { database } from '../services/firebase';
+import { database } from '../services/firebase'
 
-import { useEffect } from 'react';
-import { useTheme } from '../hooks/useTheme';
+import { useEffect } from 'react'
+import { useTheme } from '../hooks/useTheme'
 
 import { Switch } from "@chakra-ui/react"
-import logoImg from '../assets/images/logo.svg';
+import logoImg from '../assets/images/logo.svg'
 import logoImgDark from '../assets/images/logo_dark.svg'
 
-import '../styles/room.scss';
+import '../styles/room.scss'
 
 type RoomParams = {
   id: string
@@ -39,7 +39,7 @@ export function Room() {
   }, [user, history])
 
   async function handleSendQuestion(event: FormEvent) {
-    event.preventDefault();
+    event.preventDefault()
 
     if (newQuestion.trim() === '') {
       return;
@@ -56,10 +56,10 @@ export function Room() {
         avatar: user.avatar,
       },
       isHighlighted: false,
-      isAnswered: false,
+      isAnswered: false
     }
 
-    await database.ref(`rooms/${roomId}/questions`).push(question);
+    await database.ref(`rooms/${roomId}/questions`).push(question)
 
     setNewQuestion('');
   }
@@ -69,7 +69,7 @@ export function Room() {
       await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
     } else {
       await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
-        authorId: user?.id,
+        authorId: user?.id
       })
     }
   }

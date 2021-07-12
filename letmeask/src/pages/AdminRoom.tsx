@@ -1,33 +1,34 @@
-import { useHistory, useParams } from 'react-router-dom';
+import React from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 
-import { Button } from '../components/Button';
-import { RoomCode } from '../components/RoomCode';
-import { Question } from '../components/Question';
+import { Button } from '../components/Button'
+import { RoomCode } from '../components/RoomCode'
+import { Question } from '../components/Question'
 
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
+import { useRoom } from '../hooks/useRoom'
+import { database } from '../services/firebase'
 
-import { useAuth } from '../hooks/useAuth';
-import { useEffect } from 'react';
-import { useTheme } from '../hooks/useTheme';
+import { useAuth } from '../hooks/useAuth'
+import { useEffect } from 'react'
+import { useTheme } from '../hooks/useTheme'
 
-import logoImg from '../assets/images/logo.svg';
+import logoImg from '../assets/images/logo.svg'
 import logoImgDark from '../assets/images/logo_dark.svg'
-import deleteImg from '../assets/images/delete.svg';
-import checkImg from '../assets/images/check.svg';
-import answerImg from '../assets/images/answer.svg';
+import deleteImg from '../assets/images/delete.svg'
+import checkImg from '../assets/images/check.svg'
+import answerImg from '../assets/images/answer.svg'
 
-import { Switch } from "@chakra-ui/react"
-import '../styles/room.scss';
+import { Switch } from '@chakra-ui/react'
+import '../styles/room.scss'
 
 type RoomParams = {
   id: string
 }
 
-export function AdminRoom() {
+export function AdminRoom () {
   const history = useHistory()
-  const params = useParams<RoomParams>();
-  const roomId = params.id;
+  const params = useParams<RoomParams>()
+  const roomId = params.id
   const { title, questions } = useRoom(roomId)
   const user = useAuth()
   const { theme, toggleTheme } = useTheme()
@@ -38,33 +39,33 @@ export function AdminRoom() {
     }
   }, [user, history])
 
-  async function handleEndRoom() {
+  async function handleEndRoom () {
     await database.ref(`rooms/${roomId}`).update({
-      endedAt: new Date(),
+      endedAt: new Date()
     })
 
     history.push('/')
   }
 
-  async function handleUserLogOut() {
+  async function handleUserLogOut () {
     await user.signOutWithGoogle()
   }
 
-  async function handleCheckQuestionAsAnswered(questionId: string) {
+  async function handleCheckQuestionAsAnswered (questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isAnswered: true
-    });
+    })
   }
 
-  async function handleHighlightQuestion(questionId: string) {
+  async function handleHighlightQuestion (questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isHighlighted: true
-    });
+    })
   }
 
-  async function handleDeleteQuestion(questionId: string) {
+  async function handleDeleteQuestion (questionId: string) {
     if (window.confirm('Tem certeza que você deseja excluir essa pergunta?')) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
     }
   }
 
