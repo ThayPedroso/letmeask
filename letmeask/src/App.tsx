@@ -1,14 +1,15 @@
+import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { Home } from "./pages/Home"
-import { NewRoom } from "./pages/NewRoom"
-import { Room } from "./pages/Room"
-import { AdminRoom } from "./pages/AdminRoom"
+import { Home } from './pages/Home'
+import { NewRoom } from './pages/NewRoom'
+import { Room } from './pages/Room'
+import { AdminRoom } from './pages/AdminRoom'
 
 import { AuthContextProvider } from './contexts/AuthContext'
 import { ThemeContextProvider } from './contexts/ThemeContext'
 
-import { ChakraProvider } from "@chakra-ui/react"
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         </ThemeContextProvider>
       </BrowserRouter>
     </ChakraProvider>
-  );
+  )
 }
 
 export default App

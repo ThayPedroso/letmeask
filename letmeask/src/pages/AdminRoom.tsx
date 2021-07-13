@@ -1,4 +1,3 @@
-import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
 import { Button } from '../components/Button'
@@ -25,7 +24,7 @@ type RoomParams = {
   id: string
 }
 
-export function AdminRoom () {
+export function AdminRoom() {
   const history = useHistory()
   const params = useParams<RoomParams>()
   const roomId = params.id
@@ -39,7 +38,7 @@ export function AdminRoom () {
     }
   }, [user, history])
 
-  async function handleEndRoom () {
+  async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
       endedAt: new Date()
     })
@@ -47,23 +46,23 @@ export function AdminRoom () {
     history.push('/')
   }
 
-  async function handleUserLogOut () {
+  async function handleUserLogOut() {
     await user.signOutWithGoogle()
   }
 
-  async function handleCheckQuestionAsAnswered (questionId: string) {
+  async function handleCheckQuestionAsAnswered(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isAnswered: true
     })
   }
 
-  async function handleHighlightQuestion (questionId: string) {
+  async function handleHighlightQuestion(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isHighlighted: true
     })
   }
 
-  async function handleDeleteQuestion (questionId: string) {
+  async function handleDeleteQuestion(questionId: string) {
     if (window.confirm('Tem certeza que você deseja excluir essa pergunta?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
     }
@@ -76,9 +75,11 @@ export function AdminRoom () {
           <img src={theme === 'light' ? logoImg : logoImgDark} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
+            <Button isOutlined onClick={handleEndRoom}>
+              Encerrar sala
+            </Button>
             <Button onClick={handleUserLogOut}>Log Out</Button>
-            <Switch size="lg" colorScheme="purple" onChange={toggleTheme}/>
+            <Switch size="lg" colorScheme="purple" onChange={toggleTheme} />
           </div>
         </div>
       </header>
@@ -86,7 +87,7 @@ export function AdminRoom () {
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 
         <div className="question-list">
@@ -105,7 +106,10 @@ export function AdminRoom () {
                       type="button"
                       onClick={() => handleCheckQuestionAsAnswered(question.id)}
                     >
-                      <img src={checkImg} alt="Marcar pergunta como respondida" />
+                      <img
+                        src={checkImg}
+                        alt="Marcar pergunta como respondida"
+                      />
                     </button>
 
                     <button
