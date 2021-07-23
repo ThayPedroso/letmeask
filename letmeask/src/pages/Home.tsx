@@ -15,6 +15,7 @@ import '../styles/auth.scss'
 import { database } from '../services/firebase'
 
 export function Home() {
+  
   const history = useHistory()
   const { user, signInWithGoogle } = useAuth()
   const [roomCode, setRoomCode] = useState('')
