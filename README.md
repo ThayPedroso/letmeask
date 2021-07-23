@@ -50,6 +50,8 @@ O NLW é uma experiência online com muito conteúdo prático, desafios e hacks 
   - [x] entrar em uma sala
   - [x] fazer perguntas
   - [x] curtir uma pergunta
+  - [x] fazer logoff
+  - [x] mudar para tema dark
 
 - [x] Os administradores podem:
   - [x] fazer logon utilizando conta do Google
@@ -104,6 +106,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
 -   **[Firebase](https://firebase.google.com/)** (realtime database e autenticação)
 -   **[Node-sass](https://www.npmjs.com/package/node-sass)**
+-   **[ESLint](https://eslint.org/)**
+-   **[Prettier](https://prettier.io/)**
 
 > Veja o arquivo  [package.json](https://github.com/ThayPedroso/letmeask/blob/main/letmeask/package.json)
 
