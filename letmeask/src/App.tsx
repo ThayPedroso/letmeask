@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { Home } from './pages/Home'
@@ -10,10 +9,11 @@ import { AuthContextProvider } from './contexts/AuthContext'
 import { ThemeContextProvider } from './contexts/ThemeContext'
 
 import { ChakraProvider } from '@chakra-ui/react'
+import theme from './theme'
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <BrowserRouter>
         <ThemeContextProvider>
           <AuthContextProvider>
