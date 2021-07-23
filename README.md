@@ -39,7 +39,7 @@ letmeask - é uma plataforma de perguntas e respostas para lives.
 Projeto desenvolvido durante a **NLW - Next Level Week** oferecida pela [Rocketseat](https://blog.rocketseat.com.br/segunda-next-level-week/).
 O NLW é uma experiência online com muito conteúdo prático, desafios e hacks onde o conteúdo fica disponível durante uma semana.
 
-![](/letmeask.png)
+![](/letmeask.gif)
 
 ---
 
@@ -119,6 +119,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   Commit Conventional:  **[Commitlint](https://github.com/conventional-changelog/commitlint)**
 
 ---
+
+![](/letmeask.png)
 
 ## 💪 Como contribuir para o projeto
 
