@@ -42,6 +42,8 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
           avatar: photoURL
         })
         setLoading(false)
+      } else {
+        setLoading(false)
       }
     })
 

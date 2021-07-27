@@ -23,7 +23,7 @@ type RoomParams = {
 }
 
 export function Room() {
-  const { user, signOutWithGoogle } = useAuth()
+  const { user, signOutWithGoogle, signInWithGoogle } = useAuth()
   const history = useHistory()
   const params = useParams<RoomParams>()
   const [newQuestion, setNewQuestion] = useState('')
@@ -31,11 +31,11 @@ export function Room() {
   const { title, questions } = useRoom(roomId)
   const { theme, toggleTheme } = useTheme()
 
-  useEffect(() => {
-    if (!user) {
-      history.push('/')
-    }
-  }, [user, history])
+  // useEffect(() => {
+  //   if (!user) {
+  //     history.push('/')
+  //   }
+  // }, [user, history])
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -78,6 +78,14 @@ export function Room() {
     }
   }
 
+  async function handleUserLogIn() {
+    if (!user) {
+      await signInWithGoogle()
+    }
+    console.log('autenticou')
+    history.push(`/rooms/${roomId}`)
+  }
+
   async function handleUserLogOut() {
     if (user) {
       await signOutWithGoogle()
@@ -118,7 +126,8 @@ export function Room() {
               </div>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
+                Para enviar uma pergunta,{' '}
+                <button onClick={handleUserLogIn}>faça seu login</button>.
               </span>
             )}
             <Button type="submit" disabled={!user}>

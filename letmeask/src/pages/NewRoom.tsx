@@ -13,7 +13,6 @@ import logoImgDark from '../assets/images/logo_dark.svg'
 import '../styles/auth.scss'
 
 export function NewRoom() {
-
   const { user } = useAuth()
   const history = useHistory()
   const [newRoom, setNewRoom] = useState('')
